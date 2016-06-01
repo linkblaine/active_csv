@@ -1,6 +1,8 @@
 source 'https://rubygems.org'
 
-gem 'faker'
-
-gem 'pry'
+group :development do
+  gem 'faker'
+  gem 'rspec'
+  gem 'pry'
+end
 
