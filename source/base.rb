@@ -7,7 +7,7 @@ module ActiveCSV
 
     def initialize(args={})
       self.class.attributes.each do |attr|
-        self.send("#{attr.to_s}=", args.fetch(attr))
+        self.send("#{attr.to_s}=", args.fetch(attr, nil))
       end
     end
 
