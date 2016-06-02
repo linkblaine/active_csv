@@ -38,8 +38,5 @@ module ActiveCSV
     def attributes
       self.class.attributes
     end
-
-    
-
   end
 end
