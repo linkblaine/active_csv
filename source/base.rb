@@ -1,9 +1,11 @@
 require 'csv'
 require './source/reader.rb'
+require './source/search.rb'
 
 module ActiveCSV
   class Base
     extend ActiveCSV::Reader
+    extend ActiveCSV::Search
 
     def initialize(args={})
       self.class.attributes.each do |attr|
