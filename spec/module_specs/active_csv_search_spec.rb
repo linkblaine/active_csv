@@ -19,5 +19,9 @@ describe 'ActiveCSV::Search' do
     it "should return all objects that match" do 
       expect(base_class.where("type", "pants").length).to eq 5
     end
+
+    it "should throw an exception if in invalid attribute is requested" do
+      expect{base_class.where("foo", "pants")}.to raise_error(RuntimeError)
+    end    
   end
 end
