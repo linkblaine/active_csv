@@ -5,6 +5,50 @@
 
 This application is designed to act as an ORM CSV files. Users will be able to inhert a model from ARCSV::Base then interact with the CSV file as they would ActiveRecord.
 
+## Architecture
+Trying to mirror ActiveRecord as close as possible I've implemented a namespaced base class that any model can inherit from. Inside that base class I extend a collection of modules that add behavior to the base class. 
+
+```ruby
+module ActiveCSV
+  class Base
+    extend ActiveCSV::Reader
+    extend ActiveCSV::Search
+    extend ActiveCSV::Aggregator
+    extend ActiveCSV::Association
+#...    
+```
+
+Each module as been separated out based on it's behavior to follow the single responsibility principal. This will allow for anyone to easily add or remove behavior as needed. 
+
+The base class overrides the attr_accessor method in order to create a collection of attributes that can be accessed for the initialized method. Creating extensibility in defining attributes in the classes that inhert from it.
+
+```ruby
+ def initialize(args={})
+      self.class.attributes.each do |attr|
+        self.send("#{attr.to_s}=", args.fetch(attr, nil))
+      end
+    end
+
+    def self.attr_accessor(*args)
+      @attributes ||= []
+      @attributes.concat args
+      super(*args)
+    end
+```
+
+This also increases error handling accross the project making sure that implementations cannot try to use invalid attributes. 
+
+```ruby 
+module ActiveCSV
+  module Search
+    def where(attribute, value)
+      raise "Invalid Attribute #{attribute}" unless valid_attribute?(attribute)
+      self.build.select{ |object| object.send(attribute) == value.to_s }
+    end
+  end
+end
+```
+
 ## Demo
 
 To see the functionality in action I've added two classes for a demo. 
