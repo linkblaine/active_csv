@@ -75,7 +75,7 @@ To see the demo code in action run `ruby demo.rb` in the terminal to see each of
 
 To implement ActiveCSV you will need to add CSV file named the same format as you would a database to the data folder. In our example, I used the name soft_goods.csv and brands.csv. This file should have a header row that mirrors the attributes you want to add to your class.
 
-**soft_good.csv**
+**soft_goods.csv**
 ```csv
 id,type,brand,description
 8942,pants,mollitia,Consequatur nulla numquam voluptatem.
