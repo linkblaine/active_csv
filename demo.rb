@@ -1,8 +1,8 @@
 require 'pry'
-require './source/base.rb'
-require './source/reader.rb'
-require './soft_good.rb'
-require './brand.rb'
+require_relative './source/base'
+require_relative './source/reader'
+require_relative './soft_good'
+require_relative './brand'
 
 all_brands = Brand.all
 

@@ -1,5 +1,5 @@
-require './source/base.rb'
-require './source/reader.rb'
+require_relative '../source/base'
+require_relative '../source/reader'
 require_relative 'models/soft_good'
 require_relative 'models/brand'
 

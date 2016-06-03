@@ -1,8 +1,8 @@
 require 'csv'
-require './source/reader.rb'
-require './source/search.rb'
-require './source/aggregator.rb'
-require './source/association.rb'
+require_relative './reader'
+require_relative './search'
+require_relative './aggregator'
+require_relative './association'
 
 module ActiveCSV
   class Base
