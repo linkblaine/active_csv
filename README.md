@@ -57,7 +57,7 @@ To see the functionality in action I've added two classes for a demo.
 ```ruby
 class Brand < ActiveCSV::Base
   attr_accessor :id, :name, :address
-  join( SoftGood, 'name' )
+  join( SoftGood, :name )
 end
 ```
 **SoftGood.rb**
@@ -111,7 +111,7 @@ Implementing the join method in the model will link to CSV files together. It wi
 class Brand < ActiveCSV::Base
   attr_accessor :id, :name, :address
   # Join SoftGood on the brand column, that references the Brand models attribute :name
-  join( SoftGood, 'name' )
+  join( SoftGood, :name )
 end
 
 instance_of_brand.soft_goods
