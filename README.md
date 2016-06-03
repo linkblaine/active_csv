@@ -3,10 +3,10 @@
 
 ## Description
 
-This application is designed to act as an ORM CSV files. Users will be able to inhert a model from ARCSV::Base then interact with the CSV file as they would ActiveRecord.
+This application is designed to act as an ORM CSV files. Users will be able to inherit a model from ARCSV::Base then interacts with the CSV file as they would ActiveRecord.
 
 ## Architecture
-Trying to mirror ActiveRecord as close as possible I've implemented a namespaced base class that any model can inherit from. Inside that base class I extend a collection of modules that add behavior to the base class. 
+Trying to mirror ActiveRecord as close as possible I've implemented a namespaced base class that any model can inherit from. Inside that base class, I extend a collection of modules that add behavior to the base class. 
 
 ```ruby
 module ActiveCSV
@@ -18,9 +18,9 @@ module ActiveCSV
 #...    
 ```
 
-Each module as been separated out based on it's behavior to follow the single responsibility principal. This will allow for anyone to easily add or remove behavior as needed. 
+Each module as been separated out based on its behavior to follow the single responsibility principal. This will allow for anyone to easily add or remove behavior as needed. 
 
-The base class overrides the attr_accessor method in order to create a collection of attributes that can be accessed for the initialized method. Creating extensibility in defining attributes in the classes that inhert from it.
+The base class overrides the attr_accessor method in order to create a collection of attributes that can be accessed by the initialized method. Creating extensibility in defining attributes in the classes that inherit from it.
 
 ```ruby
  def initialize(args={})
@@ -36,7 +36,7 @@ The base class overrides the attr_accessor method in order to create a collectio
     end
 ```
 
-This also increases error handling accross the project making sure that implementations cannot try to use invalid attributes. 
+This also increases error handling across the project making sure that implementations cannot try to use invalid attributes. 
 
 ```ruby 
 module ActiveCSV
@@ -73,7 +73,7 @@ To see the demo code in action run `ruby demo.rb` in the terminal to see each of
 
 ## Usage
 
-To implement ActiveCSV you will need to add CSV file named the same format as you would a database to the data folder. In our example I used the name soft_goods.csv and brands.csv. This file should have a header row that mirrors the attributes you want to add to your class.
+To implement ActiveCSV you will need to add CSV file named the same format as you would a database to the data folder. In our example, I used the name soft_goods.csv and brands.csv. This file should have a header row that mirrors the attributes you want to add to your class.
 
 **soft_good.csv**
 ```csv
@@ -94,7 +94,7 @@ id,name,address
 ```
 
 ### Adding Base Attributes
-By inheriting from ActiveCSV::Base all functionality will be added to your model. The first of which will be the ability to add attributes with the attr_acessor method. Each attribute should match the corrisponding CSV file header column. If there are extra columns in the CSV file that do not need imported, leave them out of the model attributes.
+By inheriting from ActiveCSV::Base all functionality will be added to your model. The first of which will be the ability to add attributes with the attr_acessor method. Each attribute should match the corresponding CSV file header column. If there are extra columns in the CSV file that do not need to be imported, leave them out of the model attributes.
 
 ```ruby
 class SoftGood < ActiveCSV::Base
@@ -134,12 +134,11 @@ SoftGood.where(:type, 'gloves')
 ```
 
 ### group_by
-The group_by command will return a collection of the uniq values that match the attribute requested. 
+The group_by command will return a collection of the unique values that match the attribute requested. 
 
 ```ruby
 SoftGood.group_by(:type)
 ```
-
 
 
 
